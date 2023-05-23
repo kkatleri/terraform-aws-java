@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = "11"
+targetCompatibility = "11"
+
+dependencies {
+    implementation "com.amazonaws:aws-lambda-java-core:1.2.1"
+}
+
+task copyJar(type: Copy){
+    from "build/libs/aws-lambda-java-demo-1.0-SNAPSHOT.jar"
+    into "dist"
+}
+
+build.finalizedBy(copyJar)
